@@ -1,10 +1,14 @@
 <h1>Register New User</h1>
 
-<%= form_with model: @user, url: users_path(@user), data: {turbo: false }, local: true do |form| %>
+<%= form_with url: users_path, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %><br><br>
   <%= form.label :email %>
   <%= form.text_field :email %><br><br>
-  <%= form.submit 'Create' %>
+  <%= form.label :password, 'Password:' %>
+  <%= form.password_field :password %>
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %><br><br>
+  <%= form.submit 'Register as a User' %>
 <% end %>
 
