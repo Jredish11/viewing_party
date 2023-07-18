@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def login_form
+    
+  end
+
   private
 
   def user_params
