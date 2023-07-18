@@ -16,6 +16,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def login_form
+
+  end
+
+  def login_user
+    user = User.find_by(email: params[:email])
+    if user.authenticate(params[:password])
+      flash[:success] = "Welcome, #{user.email}!"
+      redirect_to root_path
+    else
+      flash[:error] = "Sorry invalid credentials"
+      render :login_form
+    end
+  end
+
   private
 
   def user_params
