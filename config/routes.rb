@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'dashboard#index'
 
-  get '/register', to: 'users#new'
-  get "/login", to: 'users#login_form', as: 'login_form'
-  post '/login', to: 'users#login_user', as: 'login_user'
+  get '/register', to: 'users#new' 
+  get "/login", to: 'sessions#new', as: 'login_form'
+  post '/login', to: 'sessions#login', as: 'login_user'
+  post '/users', to: 'sessions#create', as: 'register_user'
   
   
 
   
-  resources :users, only: [:show, :create] do
+  resources :users, only: [:show] do
     get '/discover', to: 'users/discover#index'
     get '/movies', to: 'users/movies#index'
     get '/movies/:id', to: 'users/movies#show', as: 'movie'
