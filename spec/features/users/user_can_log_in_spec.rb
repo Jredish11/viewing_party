@@ -6,7 +6,7 @@ RSpec.describe "Logging In" do
     
     visit login_form_path
 
-    fill_in :email, with: user.email
+    fill_in :email, with: "user@example.com"
     fill_in :password, with: "password"
     
     click_on "Log In"
@@ -20,6 +20,23 @@ RSpec.describe "Logging In" do
     visit login_form_path
 
     fill_in :email, with: user.email
+    fill_in :password, with: "incorrect password"
+
+    click_on "Log In"
+
+    expect(current_path).to eq(login_form_path)
+    expect(page).to have_content("Sorry invalid credentials")
+  end
+
+  it "clicks on link to go to dashboard, has to login, and fills out credentials incorrectly" do
+    user1 = User.create!(name: 'John Smith', email: 'jsmith@aol.com', password: 'password')
+    visit root_path
+
+    click_link(user1.name)
+
+    expect(current_path).to eq(login_form_path)
+
+    fill_in :email, with: user1.email
     fill_in :password, with: "incorrect password"
 
     click_on "Log In"
