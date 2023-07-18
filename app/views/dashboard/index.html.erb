@@ -11,6 +11,10 @@
   </div>
   
   <div id="log-in-link">
+  <% if current_user %>
+    <%= link_to "Log Out" %>
+  <% else %>
     <%= link_to "Log-in form", login_form_path, method: :get %>
+  <% end %>
   </div>
 </div>
