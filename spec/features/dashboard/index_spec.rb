@@ -8,7 +8,7 @@ RSpec.describe 'Landing Page' do
 
     visit root_path
   end
-
+  
   it 'displays the title of the application' do
     within('#title') do
       expect(page).to have_content('Viewing Party')
@@ -33,18 +33,24 @@ RSpec.describe 'Landing Page' do
   it 'displays a link to go back to the landing page' do
     within('#nav-bar') do
       expect(page).to have_link('Home')
-
+      
       click_link('Home')
       expect(current_path).to eq(root_path)
     end
   end
-
+  
   it 'displays a link for log in' do
     within('#log-in-link') do
       expect(page).to have_link('Log-in form')
-
+      
       click_link('Log-in form')
       expect(current_path).to eq(login_form_path)
     end
+  end
+
+  it 'when a user link is clicked it take user to login page' do
+    click_link(@user1.name)
+    
+    expect(current_path).to eq(login_form_path)
   end
 end

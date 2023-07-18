@@ -2,7 +2,7 @@
   <div id="existing-users">
     <h1>Existing Users</h1>
     <% @users.each do |user| %>
-      <p><%= link_to "#{user.name}", "/users/#{user.id}" %></p>
+      <p><%= link_to "#{user.name}", login_form_path %></p>
     <% end %>
   <div><br>
 
