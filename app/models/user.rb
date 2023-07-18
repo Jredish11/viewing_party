@@ -3,9 +3,11 @@ class User < ApplicationRecord
   has_many :party_users
   has_many :parties, through: :party_users
 
-  validates_presence_of :name, :email
+  validates_presence_of :name, :email, :password_digest
   validates_uniqueness_of :email, case_sensitive: false
 
+  has_secure_password
+  
   def hosted_parties
     parties.where(host_id: id)
   end
