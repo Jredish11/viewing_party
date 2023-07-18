@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   get '/register', to: 'users#new'
+  get "/login", to: 'users#login_form', as: 'login_form'
+  post '/login', to: 'users#login_user', as: 'login_user'
   
   
 
