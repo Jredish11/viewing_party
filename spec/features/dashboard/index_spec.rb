@@ -54,3 +54,26 @@ RSpec.describe 'Landing Page' do
     expect(current_path).to eq(login_form_path)
   end
 end
+
+describe "Landing page as a logged in user" do
+  before(:each) do
+    visit root_path
+  end
+#   As a logged in user 
+# When I visit the landing page
+# I no longer see a link to Log In or Create an Account
+# But I see a link to Log Out.
+# When I click the link to Log Out
+# I'm taken to the landing page
+# And I can see that the Log Out link has changed back to a Log In link
+  it "will not render link to login or create an account" do
+  end
+
+  it "will render a link to Log Out" do
+
+  end
+
+  it "redirects back to landing page when click on Log out, rendering Log In link" do
+    
+  end
+end
