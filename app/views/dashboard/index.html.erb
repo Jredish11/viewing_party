@@ -6,14 +6,14 @@
     <% end %>
   <div><br>
 
-  <div id="create-user">
-    <%= button_to "Create User", "/register", method: :get %>
-  </div>
   
   <div id="log-in-link">
   <% if current_user %>
-    <%= link_to "Log Out" %>
+    <%= link_to "Log Out", log_out_path, method: :delete %>
   <% else %>
+  <div id="create-user">
+    <%= button_to "Create User", "/register", method: :get %>
+  </div>
     <%= link_to "Log-in form", login_form_path, method: :get %>
   <% end %>
   </div>
