@@ -57,7 +57,16 @@ end
 
 describe "Landing page as a logged in user" do
   before(:each) do
-    visit root_path
+    user = User.create(name: "name", email: "user@example.com", password: "password")
+    
+    visit login_form_path
+
+    fill_in :email, with: "user@example.com"
+    fill_in :password, with: "password"
+    
+    click_on "Log In"
+
+    expect(current_path).to eq(root_path)
   end
 #   As a logged in user 
 # When I visit the landing page
@@ -67,13 +76,18 @@ describe "Landing page as a logged in user" do
 # I'm taken to the landing page
 # And I can see that the Log Out link has changed back to a Log In link
   it "will not render link to login or create an account" do
+    expect(page).to_not have_link("Log-in form")
+    expect(page).to_not have_button("Create User")
   end
-
+  
   it "will render a link to Log Out" do
-
+    expect(page).to have_link("Log Out")
   end
-
+  
   it "redirects back to landing page when click on Log out, rendering Log In link" do
-    
+    click_link("Log Out")
+    expect(current_path).to eq(root_path)
+    expect(page).to have_button("Create User")
+    expect(page).to have_content("Log-in form")
   end
 end
