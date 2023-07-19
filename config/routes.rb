@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/login", to: 'sessions#new', as: 'login_form'
   post '/login', to: 'sessions#login', as: 'login_user'
   post '/users', to: 'sessions#create', as: 'register_user'
-  
+  delete '/', to: 'sessions#destroy', as: 'log_out'
   
 
   
