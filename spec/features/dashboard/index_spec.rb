@@ -104,7 +104,7 @@ RSpec.describe 'Landing Page' do
 
     it "goes to dashboard if you are logged in or register to access your dashboard" do
       visit dashboard_path
-      save_and_open_page
+      
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("Welcome, #{@user.name}")
     end
