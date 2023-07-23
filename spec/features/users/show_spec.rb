@@ -6,6 +6,18 @@ RSpec.describe 'User Dashboard page' do
     @user2 = User.create!(name: 'Emily Jones', email: '343ftl.com', password: 'password')
     @user3 = User.create!(name: 'Jimmy johnson', email: 'jj33@aol.com', password: 'password')
     @user4 = User.create!(name: 'Todd Guy', email: 'tg@gmail.com', password: 'password')
+
+    visit login_form_path
+        
+    fill_in :email, with: "jsmith@aol.com"
+    fill_in :password, with: "password"
+    
+    click_on "Log In"
+    visit user_viewing_party_path(@user1, 238)
+
+    fill_in 'duration', with: 210
+    fill_in 'date', with: "2024-01-01"
+    fill_in 'start_time', with: "07:00"
   end
 
   it 'displays the users Dashboard' do
@@ -31,6 +43,12 @@ RSpec.describe 'User Dashboard page' do
   end
 
   it 'displays new event on users dashboard' do
+    visit login_form_path
+        
+        fill_in :email, with: "jsmith@aol.com"
+        fill_in :password, with: "password"
+        
+        click_on "Log In"
     visit user_viewing_party_path(@user1, 238)
 
     fill_in 'duration', with: 210
@@ -39,6 +57,7 @@ RSpec.describe 'User Dashboard page' do
     check("selected_users[]", option: @user2.id)
     check("selected_users[]", option: @user3.id)
     click_button('Create Party')
+    
 
     expect(current_path).to eq(user_path(@user1))
     expect(page).to have_content("The Godfather")

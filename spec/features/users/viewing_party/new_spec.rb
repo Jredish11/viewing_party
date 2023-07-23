@@ -6,6 +6,13 @@ RSpec.describe "User's Viewing Party page" do
     @user2 = User.create!(name: 'Emily Jones', email: '343ftl.com', password: 'password')
     @user3 = User.create!(name: 'Jimmy johnson', email: 'jj33@aol.com', password: 'password')
     @user4 = User.create!(name: 'Todd Guy', email: 'tg@gmail.com', password: 'password')
+    visit login_form_path
+        
+    fill_in :email, with: "jsmfith@aol.com"
+    fill_in :password, with: "password"
+    
+    click_on "Log In"
+    
 
     visit  user_viewing_party_path(@user1, 238)
   end

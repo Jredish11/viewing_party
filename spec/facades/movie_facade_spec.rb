@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe MovieFacade do
   describe 'class methods' do
     describe '#top_rated_movies' do
-      xit 'returns the top 20 movies' do
+      it 'returns the top 20 movies' do
         movies = MovieFacade.new({ type: 'top20rated' }).search
 
         expect(movies).to be_an(Array)
@@ -16,7 +16,7 @@ RSpec.describe MovieFacade do
     end
 
     describe '#search_movies' do
-      xit 'returns the movies that matched the search name' do
+      it 'returns the movies that matched the search name' do
         movies = MovieFacade.new({ title: 'Pulp Fiction' }).search
 
         expect(movies).to be_an(Array)

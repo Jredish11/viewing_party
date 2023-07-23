@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Landing Page' do
   describe "Welcome page" do
     before(:each) do
-      @user1 = User.create!(name: 'John Smith', email: 'jsmith@aol.com', password: 'password')
+      @user1 = User.create!(name: 'John Smith', email: 'ith@aol.com', password: 'password')
       @user2 = User.create!(name: 'Jane Doe', email: 'jdoe@gmail.com', password: 'password')
       @user3 = User.create!(name: 'Michael Jackson', email: 'mjack@gmail.com', password: 'password')
 
@@ -50,6 +50,7 @@ RSpec.describe 'Landing Page' do
     end
     
     it 'when a user link is clicked it take user to login page' do
+      save_and_open_page
       click_link(@user1.name)
       
       expect(current_path).to eq(login_form_path)
