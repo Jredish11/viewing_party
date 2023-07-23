@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'dashboard#index'
 
+  get '/dashboard', to: 'boards#index'
   get '/register', to: 'users#new' 
   get "/login", to: 'sessions#new', as: 'login_form'
   post '/login', to: 'sessions#login', as: 'login_user'
