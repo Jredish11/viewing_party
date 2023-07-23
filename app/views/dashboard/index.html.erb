@@ -1,20 +1,26 @@
 <div style="text-align: center;">
-  <div id="existing-users">
-    <h1>Existing Users</h1>
-    <% @users.each do |user| %>
-      <p><%= link_to "#{user.name}", login_form_path %></p>
-    <% end %>
-  <div><br>
-
-  
-  <div id="log-in-link">
   <% if current_user %>
-    <%= link_to "Log Out", log_out_path, method: :delete %>
+    <div id="logged-in">
+      <%= link_to "Log Out", log_out_path, method: :delete %>
+    </div>
+    <div id="existing-users">
+      <h1>Existing Users</h1>
+      <% @users.each do |user| %>
+        <p><%= user.email %></p>
+      <% end %>
+    </div>
   <% else %>
-  <div id="create-user">
-    <%= button_to "Create User", "/register", method: :get %>
-  </div>
-    <%= link_to "Log-in form", login_form_path, method: :get %>
+    <div id="existing-users">
+      <h1>Existing Users</h1>
+      <% @users.each do |user| %>
+        <p><%= link_to user.name, login_form_path %></p>
+      <% end %>
+    </div>
+    <div id="log-in-link">
+      <div id="create-user">
+        <%= button_to "Create User", "/register", method: :get %>
+      </div>
+      <%= link_to "Log-in form", login_form_path, method: :get %>
+    </div>
   <% end %>
-  </div>
 </div>
